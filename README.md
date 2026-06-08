@@ -50,7 +50,8 @@ than rehosting copyrighted text** — correct legally, and the better experience
 ├── package.json            # scripts: dev, deploy, check, db:*, vectorize:*
 ├── src/
 │   ├── index.js            # the Worker: router, archive integration, RAG, cron
-│   └── catalog.js          # bundled bibliography (runtime fallback + seed source)
+│   ├── catalog.js          # bundled bibliography (runtime fallback + seed source)
+│   └── places.js           # fieldwork geography served to the Journeys map
 ├── db/
 │   ├── schema.sql          # D1 schema
 │   ├── seed.sql            # AUTO-GENERATED from catalog.js
@@ -58,15 +59,18 @@ than rehosting copyrighted text** — correct legally, and the better experience
 └── public/                 # the static site (served by ASSETS)
     ├── index.html  life.html  children-of-crisis.html
     ├── library.html         # dynamic, archive-fed catalog
+    ├── journeys.html        # interactive Mapbox map of the fieldwork
     ├── works.html  method.html  archive.html
-    └── assets/{css,js}/
+    └── assets/{css,js}/     # incl. journeys.js (map) and library.js
 ```
 
 ### API endpoints
 
 | Route | Purpose |
 |---|---|
-| `GET /api/health` | Which bindings are active |
+| `GET /api/health` | Which bindings are active (incl. `mapbox`) |
+| `GET /api/config` | Public client config — the Mapbox token |
+| `GET /api/map` | Fieldwork geography (GeoJSON points + migration arcs) |
 | `GET /api/works` | Full catalog enriched with live archive data (cached) |
 | `GET /api/works/:slug` | One work + its archive metadata |
 | `GET /api/archive/search?q=` | Proxy of archive.org advanced search |
@@ -91,7 +95,20 @@ npm run deploy       # wrangler deploy
 > `wrangler dev` and in production; they're blocked only inside restricted CI
 > sandboxes, where the catalog degrades to `archive: null` gracefully.
 
-### Provisioning the optional bindings
+### Already provisioned
+
+**D1** (`robert-coles`) and **KV** (`robert-coles-CACHE`) are created, seeded
+(22 works), and wired into `wrangler.jsonc` — `npm run deploy` picks them up as
+is. R2 is not enabled on the account yet, so the `MEDIA` block stays commented
+and cover images stream through the edge cache instead (no functional loss).
+
+**The Journeys map** needs a Mapbox *publishable* token. Paste it into the
+`MAPBOX_TOKEN` var in `wrangler.jsonc` (it's a public, domain-restricted
+`pk.…` token — safe to commit) and redeploy. Lock it to your domain in the
+Mapbox dashboard. Until it's set, the map shows a notice and the textual
+itinerary still works.
+
+### Provisioning the remaining optional bindings
 
 Run only the ones you want, paste each returned id into `wrangler.jsonc`, and
 uncomment that block.

@@ -16,6 +16,7 @@ export const CATALOG = [
     series: "Children of Crisis", volume: 1, year: 1967,
     category: "children-of-crisis",
     blurb: "The foundation. Black children pioneering school desegregation in the South — and the white children and adults on the other side of the door — rendered without melodrama and with extraordinary moral attention.",
+    archiveId: "childrenofcrisis00colerich",
     archiveQuery: "Children of Crisis A Study of Courage and Fear Coles"
   },
   {
@@ -34,6 +35,7 @@ export const CATALOG = [
     series: "Children of Crisis", volume: 3, year: 1972,
     category: "children-of-crisis", award: "Pulitzer Prize, 1973",
     blurb: "The great migration from the inside, as Southern families — Black and white — reach the industrial North and meet a colder hardship. The Pulitzer-winning companion to Volume II.",
+    archiveId: "southgoesnorth00colerich",
     archiveQuery: "The South Goes North Coles Children of Crisis"
   },
   {
@@ -52,6 +54,7 @@ export const CATALOG = [
     series: "Children of Crisis", volume: 5, year: 1977,
     category: "children-of-crisis",
     blurb: "Having spent a decade among the poor, Coles trains the same unflinching attention on the children of wealth — and gives the language a word for what he finds: entitlement.",
+    archiveId: "privilegedoneswe00colerich",
     archiveQuery: "Privileged Ones Coles Children of Crisis"
   },
 
@@ -87,6 +90,7 @@ export const CATALOG = [
     title: "The Political Life of Children",
     year: 1986, category: "trilogy",
     blurb: "How children absorb nation, power, class, and conflict — what a child in Belfast, Soweto, or Boston already understands about the political world.",
+    archiveId: "politicallifeofc00cole_0",
     archiveQuery: "The Political Life of Children Coles"
   },
   {
@@ -94,6 +98,7 @@ export const CATALOG = [
     title: "The Spiritual Life of Children",
     year: 1990, category: "trilogy",
     blurb: "The questions children ask about God, death, and meaning — taken seriously, across faiths, as genuine theology rather than charming naivety.",
+    archiveId: "spirituallifeofc00cole",
     archiveQuery: "The Spiritual Life of Children Coles"
   },
 
@@ -178,6 +183,7 @@ export const CATALOG = [
     title: "The Story of Ruby Bridges",
     year: 1995, category: "childrens",
     blurb: "Thirty-five years after he first saw her, Coles gave Ruby Bridges back to the children of a new generation. Illustrated by George Ford.",
+    archiveId: "storyofrubybridg0000cole",
     archiveQuery: "The Story of Ruby Bridges Coles"
   },
   {
@@ -186,6 +192,14 @@ export const CATALOG = [
     year: 1973, category: "documentary",
     blurb: "A documentary collaboration with photographer Alex Harris — Coles's interviews paired with images of the elders of northern New Mexico.",
     archiveQuery: "The Old Ones of New Mexico Coles"
+  },
+  {
+    slug: "doing-documentary-work",
+    title: "Doing Documentary Work",
+    year: 1997, category: "documentary",
+    archiveId: "doingdocumentary0000cole_m7d6",
+    blurb: "Coles on his own craft — the ethics and art of observing other lives, reading Agee, Orwell, Dorothea Lange and William Carlos Williams as fellow witnesses. The closest thing he wrote to a manual for the method behind every other book.",
+    archiveQuery: "Doing Documentary Work Coles"
   }
 ];
 

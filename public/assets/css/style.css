@@ -277,3 +277,39 @@ h4 { font-size: 1.2rem; font-family: var(--serif); font-weight: 600; }
 .loading { text-align: center; color: var(--ink-faint); font-family: var(--sans); padding: 3rem 0; }
 .cat-head { font-family: var(--display); font-size: 1.5rem; color: var(--ink); margin: 2.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
 .cat-head:first-of-type { margin-top: 0; }
+
+/* ---------- Figures / archival photographs ---------- */
+figure.figure { margin: clamp(2rem, 5vw, 3rem) auto; max-width: 44rem; }
+figure.figure img { width: 100%; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper-deep); box-shadow: 0 8px 28px var(--shadow); display: block; }
+figure.figure figcaption { font-family: var(--sans); font-size: 0.82rem; line-height: 1.5; color: var(--ink-faint); margin-top: 0.7rem; padding-left: 0.9rem; border-left: 2px solid var(--gold); }
+figure.figure figcaption b { color: var(--ink-soft); font-weight: 600; }
+figure.figure figcaption a { color: var(--ink-soft); }
+figure.figure.inset { max-width: 22rem; float: right; margin: 0.4rem 0 1.2rem 1.8rem; }
+@media (max-width: 620px) { figure.figure.inset { float: none; max-width: 100%; margin: 2rem auto; } }
+
+/* ---------- The Journeys map ---------- */
+.map-shell { position: relative; }
+#map { width: 100%; height: clamp(26rem, 72vh, 46rem); background: var(--paper-deep); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.map-legend { position: absolute; top: 1rem; left: 1rem; z-index: 5; background: rgba(251, 248, 241, 0.94); backdrop-filter: blur(6px); border: 1px solid var(--rule); border-radius: 4px; padding: 0.8rem 0.95rem; box-shadow: 0 6px 20px var(--shadow); max-width: 17rem; }
+.map-legend h4 { font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.66rem; color: var(--ink-faint); margin: 0 0 0.6rem; }
+.map-legend ul { list-style: none; margin: 0; padding: 0; }
+.map-legend li { display: flex; align-items: center; gap: 0.5rem; font-family: var(--sans); font-size: 0.74rem; color: var(--ink-soft); padding: 0.16rem 0; }
+.map-legend .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; box-shadow: 0 0 0 2px rgba(255,255,255,0.7); }
+.map-fallback { padding: 2.5rem var(--gutter); text-align: center; color: var(--ink-soft); }
+.map-fallback code { background: var(--paper-deep); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
+
+/* Mapbox popups, restyled to match the paper aesthetic */
+.mapboxgl-popup-content { font-family: var(--serif); background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; box-shadow: 0 10px 30px var(--shadow); padding: 1rem 1.1rem; max-width: 19rem; }
+.mapboxgl-popup-content h3 { font-family: var(--display); font-size: 1.25rem; margin: 0 0 0.1rem; }
+.mapboxgl-popup-content .pop-meta { font-family: var(--sans); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 0.5rem; }
+.mapboxgl-popup-content p { font-size: 0.92rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 0.6rem; }
+.mapboxgl-popup-content a.pop-link { font-family: var(--sans); font-size: 0.76rem; font-weight: 600; color: var(--oxblood); text-decoration: none; }
+.mapboxgl-popup-close-button { color: var(--ink-faint); font-size: 1.2rem; }
+.mapboxgl-popup-tip { border-top-color: var(--card) !important; border-bottom-color: var(--card) !important; }
+
+/* The journeys list beneath the map */
+.journeys-list { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); margin-top: 2rem; }
+.journeys-list button { text-align: left; background: var(--card); border: 1px solid var(--rule); border-left-width: 3px; border-radius: 3px; padding: 0.8rem 1rem; cursor: pointer; font: inherit; transition: transform .15s, box-shadow .15s; }
+.journeys-list button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px var(--shadow); }
+.journeys-list .jl-place { font-family: var(--display); font-size: 1.15rem; color: var(--ink); }
+.journeys-list .jl-meta { font-family: var(--sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-top: 0.15rem; }

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Journeys · Robert Coles</title>
+<meta name="description" content="An interactive map of the fieldwork behind Robert Coles's Children of Crisis — from the desegregating South to the cities of the North, the Hopi mesas, the Alaskan Arctic, and the homes of the privileged.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">Robert <span>Coles</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="life.html">A Life</a>
+      <a href="children-of-crisis.html">Children of Crisis</a>
+      <a href="journeys.html" aria-current="page">The Journeys</a>
+      <a href="library.html">The Library</a>
+      <a href="works.html">The Larger Work</a>
+      <a href="method.html">The Art of Listening</a>
+      <a href="archive.html">The Archive</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head wrap">
+    <p class="eyebrow">The fieldwork, mapped</p>
+    <h1>The Journeys</h1>
+    <p class="kicker">For seventeen years Coles followed the children of a changing nation across the map — from one New Orleans schoolhouse to the hollows of Appalachia, the projects of the North, the mesas of Arizona, the Arctic coast, and the mansions of the rich. Trace the route of <em>Children of Crisis</em>.</p>
+  </section>
+
+  <section class="map-shell">
+    <div id="map" aria-label="Map of Robert Coles's fieldwork locations"></div>
+    <aside class="map-legend" id="map-legend" hidden></aside>
+    <div class="map-fallback" id="map-fallback" hidden>
+      <p>The interactive map needs a Mapbox token. Add your publishable token as the
+      <code>MAPBOX_TOKEN</code> variable in <code>wrangler.jsonc</code> and redeploy.
+      Meanwhile, the itinerary below lists every place on the route.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="prose reveal">
+      <p>Each marker is a place Coles lived among the people he wrote about — colored by which strand of the work brought him there. The dashed arcs trace the <em>The South Goes North</em> migration of Volume III, as families left the rural South for the industrial cities. Select any stop to read what he found there, and to step into the matching book.</p>
+    </div>
+
+    <h2 class="reveal" style="margin-top:2.5rem;">The itinerary</h2>
+    <div class="journeys-list" id="journeys-list" aria-label="Fieldwork locations"></div>
+  </section>
+
+  <section class="wrap">
+    <p class="pullquote reveal">
+      I have to go where the children are — to their homes, their schools, their streets — and stay long enough that I stop being a stranger.
+      <cite>In the spirit of Robert Coles, on his method</cite>
+    </p>
+    <div class="btn-row" style="justify-content:center;">
+      <a class="btn btn-solid" href="children-of-crisis.html">Read the five volumes →</a>
+      <a class="btn btn-ghost" href="library.html">Open the Library</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <h4>Robert Coles</h4>
+      <p class="colophon">1929 — 2026</p>
+      <p style="color:var(--ink-soft); font-size:0.95rem; max-width:24rem;">A reader's companion and memorial — made to send people back to the books themselves.</p>
+    </div>
+    <div>
+      <h4>The Work</h4>
+      <ul>
+        <li><a href="life.html">A Life</a></li>
+        <li><a href="children-of-crisis.html">Children of Crisis</a></li>
+        <li><a href="journeys.html">The Journeys</a></li>
+        <li><a href="library.html">The Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Read Him</h4>
+      <ul>
+        <li><a href="https://archive.org/search?query=creator%3A%22Coles%2C+Robert%22" rel="noopener" target="_blank">Internet Archive</a></li>
+        <li><a href="https://finding-aids.lib.unc.edu/04333/" rel="noopener" target="_blank">Coles Papers · UNC</a></li>
+        <li><a href="https://findingaids.lib.msu.edu/repositories/4/resources/5733" rel="noopener" target="_blank">Coles Papers · MSU</a></li>
+        <li><a href="archive.html">All sources</a></li>
+      </ul>
+    </div>
+    <p class="fine">
+      Map locations are approximate, marking the places and peoples documented in <em>Children of Crisis</em> and the later trilogy. Base map © <a href="https://www.mapbox.com/about/maps/" rel="noopener" target="_blank">Mapbox</a> and © <a href="https://www.openstreetmap.org/about/" rel="noopener" target="_blank">OpenStreetMap</a>.
+    </p>
+  </div>
+</footer>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/journeys.js"></script>
+</body>
+</html>

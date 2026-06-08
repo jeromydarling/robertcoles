@@ -14,6 +14,7 @@
  */
 
 import { CATALOG, CATEGORIES } from "./catalog.js";
+import { MAP_POINTS, MAP_ARCS, MAP_BOUNDS, LEGEND } from "./places.js";
 
 const UA = "RobertColesMemorial/1.0 (+archive integration; respectful caching)";
 const IA = "https://archive.org";
@@ -292,7 +293,23 @@ export default {
             DB: !!env.DB, CACHE: !!env.CACHE, MEDIA: !!env.MEDIA,
             AI: !!env.AI, VECTORIZE: !!env.VECTORIZE,
           },
+          mapbox: !!env.MAPBOX_TOKEN,
           note: "Unbound features degrade gracefully; the archive proxy works regardless.",
+        });
+      }
+
+      // Public client config (the Mapbox token is a publishable pk.* token,
+      // domain-restricted at Mapbox; safe to hand to the browser).
+      if (p === "/api/config") {
+        return json({ mapboxToken: env.MAPBOX_TOKEN || "" }, {
+          headers: { "cache-control": "public, max-age=600" },
+        });
+      }
+
+      // The geography of the fieldwork, for the Journeys map.
+      if (p === "/api/map") {
+        return json({ points: MAP_POINTS, arcs: MAP_ARCS, bounds: MAP_BOUNDS, legend: LEGEND }, {
+          headers: { "cache-control": "public, max-age=86400" },
         });
       }
 

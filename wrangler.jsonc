@@ -22,16 +22,19 @@
   // ---------------------------------------------------------------------------
 
   // D1 — canonical catalog (works, editions, timeline, quotes, search log)
-  // "d1_databases": [
-  //   { "binding": "DB", "database_name": "robert-coles", "database_id": "PASTE_D1_ID" }
-  // ],
+  // Provisioned & seeded with all 22 works.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "robert-coles", "database_id": "a3cbde31-116a-4247-8b5d-bcb8405f61c2" }
+  ],
 
   // KV — durable cache for archive.org / Open Library API responses
-  // "kv_namespaces": [
-  //   { "binding": "CACHE", "id": "PASTE_KV_ID" }
-  // ],
+  "kv_namespaces": [
+    { "binding": "CACHE", "id": "b0cb4571f4904873b7fd16346bc6bc84" }
+  ],
 
-  // R2 — cached cover images and any openly-licensed audio
+  // R2 — cached cover images. Not enabled on this account yet; the Worker
+  // degrades gracefully (covers stream through the edge cache instead).
+  // To enable: `npm run r2:create`, then uncomment and redeploy.
   // "r2_buckets": [
   //   { "binding": "MEDIA", "bucket_name": "robert-coles-media" }
   // ],
@@ -44,11 +47,14 @@
   //   { "binding": "VECTORIZE", "index_name": "robert-coles-corpus" }
   // ],
 
-  // Cron — nightly refresh of the archive index into D1 / KV / Vectorize
-  // "triggers": { "crons": ["0 7 * * *"] },
+  // Cron — nightly refresh of the archive cache (and vector index when bound)
+  "triggers": { "crons": ["0 7 * * *"] },
 
   "vars": {
     "SITE_NAME": "Robert Coles — A Memorial & Reader's Companion",
-    "ARCHIVE_CREATOR": "Coles, Robert"
+    "ARCHIVE_CREATOR": "Coles, Robert",
+    // Paste your Mapbox *publishable* token (pk.…) here to light up the
+    // Journeys map. It's a public, domain-restricted token — safe to commit.
+    "MAPBOX_TOKEN": ""
   }
 }

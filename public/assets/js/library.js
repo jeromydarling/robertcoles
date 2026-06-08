@@ -89,7 +89,7 @@
           '<ul class="hits"></ul></div>'
       : "";
 
-    return '<article class="book">' +
+    return '<article class="book" id="' + esc(w.slug) + '">' +
       cover +
       '<div class="bk-body">' +
         "<h3>" + esc(w.title) + "</h3>" +
