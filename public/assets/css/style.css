@@ -235,3 +235,45 @@ h4 { font-size: 1.2rem; font-family: var(--serif); font-weight: 600; }
 /* ---------- Skip link ---------- */
 .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--paper); padding: 0.6rem 1rem; z-index: 100; }
 .skip:focus { left: 0.5rem; top: 0.5rem; }
+
+/* =================================================================
+   The Library — dynamic, archive-fed catalog (library.html)
+   ================================================================= */
+.ask-panel { background: var(--card); border: 1px solid var(--rule); border-radius: 4px; padding: clamp(1.3rem,4vw,2rem); max-width: var(--measure); margin: 0 auto clamp(2rem,5vw,3rem); box-shadow: 0 1px 0 var(--shadow); }
+.ask-panel h2 { margin-bottom: 0.3rem; }
+.ask-panel .hint { font-family: var(--sans); font-size: 0.85rem; color: var(--ink-faint); margin: 0 0 1rem; }
+.ask-form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.ask-form input { flex: 1 1 16rem; font-family: var(--serif); font-size: 1rem; padding: 0.7rem 0.9rem; border: 1px solid var(--ink-faint); border-radius: 2px; background: var(--paper); color: var(--ink); }
+.ask-form input:focus { outline: 2px solid var(--oxblood); outline-offset: 1px; }
+.ask-answer { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); color: var(--ink-soft); }
+.ask-answer .src { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.8rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2.5rem; }
+.chip { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em; padding: 0.4rem 0.9rem; border-radius: 100px; border: 1px solid var(--rule); background: var(--card); color: var(--ink-soft); cursor: pointer; transition: all .15s; }
+.chip:hover { border-color: var(--gold); }
+.chip[aria-pressed="true"] { background: var(--oxblood); color: var(--paper); border-color: var(--oxblood); }
+
+.shelf { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
+.book { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1.1rem; background: var(--card); border: 1px solid var(--rule); border-radius: 3px; padding: 1.2rem; box-shadow: 0 1px 0 var(--shadow); transition: transform .2s, box-shadow .2s; }
+.book:hover { transform: translateY(-2px); box-shadow: 0 10px 24px var(--shadow); }
+.book .cover { width: 5.5rem; height: 7.6rem; object-fit: cover; background: var(--paper-deep); border: 1px solid var(--rule); border-radius: 2px; }
+.book .cover.ph { display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 1.6rem; color: var(--ink-faint); text-align: center; line-height: 1.1; padding: 0.4rem; }
+.book h3 { font-size: 1.2rem; line-height: 1.12; margin-bottom: 0.1rem; }
+.book .bk-sub { font-family: var(--display); font-style: italic; color: var(--ink-soft); font-size: 0.95rem; }
+.book .bk-meta { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--ink-faint); text-transform: uppercase; margin: 0.3rem 0; }
+.book .bk-meta .pulitzer { color: var(--oxblood); font-weight: 700; }
+.book .bk-blurb { font-size: 0.92rem; color: var(--ink-soft); margin: 0.4rem 0 0.7rem; }
+.book .bk-actions { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; margin-top: auto; }
+.book .bk-actions a, .book .bk-actions button { color: var(--oxblood); background: none; border: 0; padding: 0; cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 0.15em; }
+.book .bk-actions .restricted { color: var(--ink-faint); font-weight: 500; text-decoration: none; cursor: default; }
+.inside { grid-column: 1 / -1; margin-top: 0.4rem; }
+.inside form { display: flex; gap: 0.4rem; }
+.inside input { flex: 1; font-family: var(--serif); font-size: 0.9rem; padding: 0.45rem 0.6rem; border: 1px solid var(--rule); border-radius: 2px; background: var(--paper); }
+.inside .hits { list-style: none; padding: 0; margin: 0.6rem 0 0; font-size: 0.85rem; }
+.inside .hits li { padding: 0.4rem 0; border-top: 1px dotted var(--rule); color: var(--ink-soft); }
+.inside .hits .pg { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-faint); }
+@media (max-width: 400px) { .book { grid-template-columns: 1fr; } .book .cover { width: 4.5rem; height: 6.3rem; } }
+
+.loading { text-align: center; color: var(--ink-faint); font-family: var(--sans); padding: 3rem 0; }
+.cat-head { font-family: var(--display); font-size: 1.5rem; color: var(--ink); margin: 2.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+.cat-head:first-of-type { margin-top: 0; }

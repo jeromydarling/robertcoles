@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Library · Robert Coles</title>
+<meta name="description" content="A living catalog of Robert Coles's books, drawn in real time from the Internet Archive — with covers, descriptions, full-text search, and an 'Ask the Archive' guide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">Robert <span>Coles</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="life.html">A Life</a>
+      <a href="children-of-crisis.html">Children of Crisis</a>
+      <a href="library.html" aria-current="page">The Library</a>
+      <a href="works.html">The Larger Work</a>
+      <a href="method.html">The Art of Listening</a>
+      <a href="archive.html">The Archive</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head wrap">
+    <p class="eyebrow">Live from the Internet Archive</p>
+    <h1>The Library</h1>
+    <p class="kicker">Every book below is drawn in real time from the archives — cover, description, and a link straight into the reader. Where a book can be searched, you can look inside it and jump to the page.</p>
+  </section>
+
+  <section class="wrap">
+
+    <div class="ask-panel reveal">
+      <p class="eyebrow">Ask the Archive</p>
+      <h2>Put a question to his work</h2>
+      <p class="hint">A guide grounded in his books — ask about a theme, a person, or where to begin. <span id="ask-status"></span></p>
+      <form class="ask-form" id="ask-form">
+        <input type="text" id="ask-input" name="q" placeholder="e.g. What did Coles learn from Ruby Bridges?" autocomplete="off">
+        <button class="btn btn-solid" type="submit">Ask</button>
+      </form>
+      <div class="ask-answer" id="ask-answer" hidden></div>
+    </div>
+
+    <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+
+    <div id="shelf">
+      <p class="loading" id="loading">Gathering his books from the archive…</p>
+    </div>
+
+    <p class="loading" id="empty" hidden>
+      The live catalog could not be reached. You can still browse
+      <a href="https://archive.org/search?query=creator%3A%22Coles%2C+Robert%22" target="_blank" rel="noopener">his works on the Internet Archive</a>.
+    </p>
+
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <h4>Robert Coles</h4>
+      <p class="colophon">1929 — 2026</p>
+      <p style="color:var(--ink-soft); font-size:0.95rem; max-width:24rem;">A reader's companion and memorial — made to send people back to the books themselves.</p>
+    </div>
+    <div>
+      <h4>The Work</h4>
+      <ul>
+        <li><a href="life.html">A Life</a></li>
+        <li><a href="children-of-crisis.html">Children of Crisis</a></li>
+        <li><a href="library.html">The Library</a></li>
+        <li><a href="works.html">The Larger Work</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Read Him</h4>
+      <ul>
+        <li><a href="https://archive.org/search?query=creator%3A%22Coles%2C+Robert%22" rel="noopener" target="_blank">Internet Archive</a></li>
+        <li><a href="https://finding-aids.lib.unc.edu/04333/" rel="noopener" target="_blank">Coles Papers · UNC</a></li>
+        <li><a href="https://findingaids.lib.msu.edu/repositories/4/resources/5733" rel="noopener" target="_blank">Coles Papers · MSU</a></li>
+        <li><a href="archive.html">All sources</a></li>
+      </ul>
+    </div>
+    <p class="fine">
+      Catalog data is fetched live from the Internet Archive and Open Library. Books in copyright are linked, not rehosted; full reading happens in the Archive's own reader. See <a href="archive.html#sources">Sources</a>.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/library.js"></script>
+</body>
+</html>

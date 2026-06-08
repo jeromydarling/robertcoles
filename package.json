@@ -1,0 +1,22 @@
+{
+  "name": "robert-coles",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A memorial & reader's companion for Robert Coles, on Cloudflare Workers.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "wrangler deploy --dry-run --outdir=.wrangler-dryrun",
+    "db:create": "wrangler d1 create robert-coles",
+    "db:schema": "wrangler d1 execute robert-coles --remote --file=./db/schema.sql",
+    "db:seed": "wrangler d1 execute robert-coles --remote --file=./db/seed.sql",
+    "kv:create": "wrangler kv namespace create CACHE",
+    "r2:create": "wrangler r2 bucket create robert-coles-media",
+    "vectorize:create": "wrangler vectorize create robert-coles-corpus --dimensions=768 --metric=cosine",
+    "reindex": "curl -s -X POST \"$WORKER_URL/api/admin/reindex\" -H \"x-admin-key: $ADMIN_KEY\""
+  },
+  "devDependencies": {
+    "wrangler": "^4.98.0"
+  }
+}

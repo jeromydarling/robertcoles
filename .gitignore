@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+.wrangler-dryrun/
+.dev.vars
+.dev.vars.*
+*.log
+.DS_Store
+.env

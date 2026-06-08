@@ -1,0 +1,54 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "robert-coles",
+  "main": "src/index.js",
+  "compatibility_date": "2026-06-08",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+
+  // The existing static site (public/) is served directly from the edge.
+  // Only /api/* and /img/* are handed to the Worker first.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/img/*"]
+  },
+
+  // ---------------------------------------------------------------------------
+  // EVERYTHING BELOW IS OPTIONAL. The site + live archive.org proxy deploy and
+  // run with NONE of these (the Worker degrades gracefully, using the built-in
+  // Cache API). Provision a resource, paste its id, and uncomment to light up
+  // the matching feature. Setup commands are in README.md › "Provisioning".
+  // ---------------------------------------------------------------------------
+
+  // D1 — canonical catalog (works, editions, timeline, quotes, search log)
+  // "d1_databases": [
+  //   { "binding": "DB", "database_name": "robert-coles", "database_id": "PASTE_D1_ID" }
+  // ],
+
+  // KV — durable cache for archive.org / Open Library API responses
+  // "kv_namespaces": [
+  //   { "binding": "CACHE", "id": "PASTE_KV_ID" }
+  // ],
+
+  // R2 — cached cover images and any openly-licensed audio
+  // "r2_buckets": [
+  //   { "binding": "MEDIA", "bucket_name": "robert-coles-media" }
+  // ],
+
+  // Workers AI — embeddings + grounded "Ask the Archive" answers
+  // "ai": { "binding": "AI" },
+
+  // Vectorize — semantic index over the corpus (dimensions match bge-base = 768)
+  // "vectorize": [
+  //   { "binding": "VECTORIZE", "index_name": "robert-coles-corpus" }
+  // ],
+
+  // Cron — nightly refresh of the archive index into D1 / KV / Vectorize
+  // "triggers": { "crons": ["0 7 * * *"] },
+
+  "vars": {
+    "SITE_NAME": "Robert Coles — A Memorial & Reader's Companion",
+    "ARCHIVE_CREATOR": "Coles, Robert"
+  }
+}
