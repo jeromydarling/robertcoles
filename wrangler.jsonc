@@ -40,21 +40,22 @@
   // ],
 
   // Workers AI — embeddings + grounded "Ask the Archive" answers
-  // "ai": { "binding": "AI" },
+  "ai": { "binding": "AI" },
 
   // Vectorize — semantic index over the corpus (dimensions match bge-base = 768)
-  // "vectorize": [
-  //   { "binding": "VECTORIZE", "index_name": "robert-coles-corpus" }
-  // ],
+  // The index is created by the GitHub Actions deploy workflow.
+  "vectorize": [
+    { "binding": "VECTORIZE", "index_name": "robert-coles-corpus" }
+  ],
 
   // Cron — nightly refresh of the archive cache (and vector index when bound)
   "triggers": { "crons": ["0 7 * * *"] },
 
   "vars": {
     "SITE_NAME": "Robert Coles — A Memorial & Reader's Companion",
-    "ARCHIVE_CREATOR": "Coles, Robert",
-    // Paste your Mapbox *publishable* token (pk.…) here to light up the
-    // Journeys map. It's a public, domain-restricted token — safe to commit.
-    "MAPBOX_TOKEN": ""
+    "ARCHIVE_CREATOR": "Coles, Robert"
+    // MAPBOX_TOKEN is injected as an encrypted Worker secret by the deploy
+    // workflow (GitHub secret → `wrangler secret`), so the token never lives in
+    // git. The Worker reads env.MAPBOX_TOKEN the same way regardless.
   }
 }
