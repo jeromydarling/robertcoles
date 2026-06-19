@@ -39,14 +39,15 @@
   //   { "binding": "MEDIA", "bucket_name": "robert-coles-media" }
   // ],
 
-  // Workers AI — embeddings + grounded "Ask the Archive" answers
-  "ai": { "binding": "AI" },
-
-  // Vectorize — semantic index over the corpus (dimensions match bge-base = 768)
-  // The index is created by the GitHub Actions deploy workflow.
-  "vectorize": [
-    { "binding": "VECTORIZE", "index_name": "robert-coles-corpus" }
-  ],
+  // Workers AI + Vectorize — power "Ask the Archive". Commented out so the
+  // git-connected Cloudflare Workers Build deploys cleanly: `wrangler deploy`
+  // fails if it binds a Vectorize index that doesn't exist yet.
+  // TO ENABLE (one time): create the index, then uncomment both blocks & push:
+  //   npx wrangler vectorize create robert-coles-corpus --dimensions=768 --metric=cosine
+  // "ai": { "binding": "AI" },
+  // "vectorize": [
+  //   { "binding": "VECTORIZE", "index_name": "robert-coles-corpus" }
+  // ],
 
   // Cron — nightly refresh of the archive cache (and vector index when bound)
   "triggers": { "crons": ["0 7 * * *"] },

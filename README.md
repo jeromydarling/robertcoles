@@ -84,11 +84,16 @@ than rehosting copyrighted text** — correct legally, and the better experience
 
 ## Develop & deploy
 
+Deployment is handled by **Cloudflare Workers Builds** (the dashboard's native
+Git integration): every push to this repo runs `wrangler deploy` on Cloudflare's
+side and publishes to `https://robertcoles.<subdomain>.workers.dev`. No GitHub
+secrets or Actions are involved.
+
 ```bash
 npm install
-npm run dev          # local: http://localhost:8787
+npm run dev          # local preview: http://localhost:8787
 npm run check        # offline bundle + config validation (no auth needed)
-npm run deploy       # wrangler deploy
+# `git push` → Cloudflare Workers Builds deploys automatically
 ```
 
 > Note: live archive.org calls require outbound network. They work in
@@ -98,15 +103,24 @@ npm run deploy       # wrangler deploy
 ### Already provisioned
 
 **D1** (`robert-coles`) and **KV** (`robert-coles-CACHE`) are created, seeded
-(22 works), and wired into `wrangler.jsonc` — `npm run deploy` picks them up as
-is. R2 is not enabled on the account yet, so the `MEDIA` block stays commented
-and cover images stream through the edge cache instead (no functional loss).
+(22 works), and wired into `wrangler.jsonc`. R2 is not enabled on the account,
+so the `MEDIA` block stays commented and cover images stream through the edge
+cache instead (no functional loss).
 
-**The Journeys map** needs a Mapbox *publishable* token. Paste it into the
-`MAPBOX_TOKEN` var in `wrangler.jsonc` (it's a public, domain-restricted
-`pk.…` token — safe to commit) and redeploy. Lock it to your domain in the
-Mapbox dashboard. Until it's set, the map shows a notice and the textual
-itinerary still works.
+**The Journeys map** needs a Mapbox *publishable* token. Because the repo is
+git-deployed (and GitHub blocks committing `pk.…` tokens), set it as an
+encrypted **Worker secret** in the dashboard rather than in `wrangler.jsonc`:
+*Workers & Pages → robertcoles → Settings → Variables and Secrets → Add →
+Secret → name `MAPBOX_TOKEN`*. Secrets survive Workers Builds redeploys. Until
+it's set, the map shows a notice and the textual itinerary still works.
+
+**Ask the Archive** (Workers AI + Vectorize) ships commented out so the git
+build deploys cleanly. To turn it on, create the index once and uncomment the
+`ai` + `vectorize` blocks in `wrangler.jsonc`, then push:
+
+```bash
+npx wrangler vectorize create robert-coles-corpus --dimensions=768 --metric=cosine
+```
 
 ### Provisioning the remaining optional bindings
 
